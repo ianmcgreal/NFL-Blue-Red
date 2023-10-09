@@ -7,7 +7,7 @@ public class LeagueCLI {
     private static final Scanner userInput = new Scanner(System.in);
     private static League nfl = new League();
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         run();
     }
 
@@ -129,7 +129,4 @@ public class LeagueCLI {
         System.out.println(">>> ");
         int redS = userInput.nextInt();
     }
-
-
-
 }
