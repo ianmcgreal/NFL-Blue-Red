@@ -4,6 +4,10 @@ public class Player {
 
     private Position position;
 
+//    public Player(String name, String position) {
+//        this.name = name;
+//        this.position = position
+//    }
     public String getName() {
         return name;
     }

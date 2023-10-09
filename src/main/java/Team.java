@@ -9,7 +9,7 @@ public class Team {
         return roster;
     }
 
-    public void addPlayer(Player player) {
+    public void addPlayerToTeam(Player player) {
         roster.add(player);
     }
 

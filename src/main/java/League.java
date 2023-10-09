@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Map;
+import java.util.Scanner;
 
 import static java.util.Map.entry;
 
@@ -43,8 +46,25 @@ public class League {
         );
     }
 
+    public void readIn(File input) {
+        try (Scanner fileReader = new Scanner(input)) {
+            while (fileReader.hasNextLine()) {
+//                String[] playerInfo = fileReader.nextLine().split(",");
+//                this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1]));
+
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File could not be found");
+            LeagueCLI.askForInputFile();
+        }
+    }
+
     public Map<String, Team> getLeagueTeams() {
         return this.leagueTeams;
+    }
+
+    public void addPlayerToLeague(String team, Player player) {
+//        leagueTeams.get(team).addPlayerToTeam();
     }
 
 }
