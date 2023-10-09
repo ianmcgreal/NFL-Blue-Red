@@ -13,4 +13,10 @@ public class Team {
         roster.add(player);
     }
 
+    public void printPlayers() {
+        for (Player player : roster) {
+            System.out.println(player.getPosition() + ": " + player.getName());
+        }
+    }
+
 }

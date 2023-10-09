@@ -49,9 +49,8 @@ public class League {
     public void readIn(File input) {
         try (Scanner fileReader = new Scanner(input)) {
             while (fileReader.hasNextLine()) {
-//                String[] playerInfo = fileReader.nextLine().split(",");
-//                this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1]));
-
+                String[] playerInfo = fileReader.nextLine().split(",");
+                this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1]));
             }
         } catch (FileNotFoundException e) {
             System.err.println("File could not be found");
@@ -59,12 +58,22 @@ public class League {
         }
     }
 
+    public void addPlayerToLeague(String team, Player player) {
+        leagueTeams.get(team).addPlayerToTeam(player);
+    }
+
     public Map<String, Team> getLeagueTeams() {
         return this.leagueTeams;
     }
 
-    public void addPlayerToLeague(String team, Player player) {
-//        leagueTeams.get(team).addPlayerToTeam();
+    public void printLeague() {
+        for (String team : leagueTeams.keySet()) {
+            System.out.println("*******************************");
+            System.out.println(team);
+            System.out.println("*******************************");
+            leagueTeams.get(team).printPlayers();
+            System.out.println();
+        }
     }
 
 }
