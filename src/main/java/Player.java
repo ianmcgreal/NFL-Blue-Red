@@ -1,12 +1,14 @@
 public class Player {
 
-    private String name;
+    private final String name;
 
     private Position position;
 
-    public Player(String name, String position) {
-        this.name = name;
+    private boolean isBlue;
 
+    public Player(String name, String position, boolean isBlue) {
+        this.name = name;
+        this.isBlue = isBlue;
         if (position.equalsIgnoreCase("quarterback")
                 || position.equalsIgnoreCase("quarter back")
                 || position.equalsIgnoreCase("quarter_back")

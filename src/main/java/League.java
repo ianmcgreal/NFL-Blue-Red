@@ -50,7 +50,8 @@ public class League {
         try (Scanner fileReader = new Scanner(input)) {
             while (fileReader.hasNextLine()) {
                 String[] playerInfo = fileReader.nextLine().split(",");
-                this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1]));
+                boolean blueChip = playerInfo[3].equalsIgnoreCase("Blue");
+                this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1], blueChip));
             }
         } catch (FileNotFoundException e) {
             System.err.println("File could not be found");
