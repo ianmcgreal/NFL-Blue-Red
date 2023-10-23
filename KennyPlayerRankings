@@ -1,5 +1,5 @@
 Patrick Mahomes,QB,Kansas City Chiefs,Blue
-Joe Burrow,QB,Cininnati Bengals,Blue
+Joe Burrow,QB,Cincinnati Bengals,Blue
 Josh Allen,QB,Buffalo Bills,Blue
 Aaron Rodgers,QB,New York Jets,Blue
 Jalen Hurts,QB,Philadelphia Eagles,Blue
@@ -8,7 +8,6 @@ Matthew Stafford,QB,Los Angeles Rams,Red
 Justin Herbert,QB,Los Angeles Chargers,Red
 Deshaun Watson,QB,Cleveland Browns,Red
 Lamar Jackson,QB,Baltimore Ravens,Red
-
 Nick Chubb,RB,Cleveland Browns,Blue
 Derrick Henry,RB,Tennessee Titans,Blue
 Christian McCaffrey,RB,San Francisco 49ers,Blue
@@ -19,7 +18,6 @@ Tony Pollard,RB,Dallas Cowboys,Red
 Travis Etienne,RB,Jacksonville Jaguars,Red
 Josh Jacobs,RB,Las Vegas Raiders,Red
 Dalvin Cook,RB,New York Jets,Red
-
 Justin Jefferson,WR,Minnesota Vikings,Blue
 Jamarr Chase,WR,Cincinnati Bengals,Blue
 Davante Adams,WR,Las Vegas Raiders,Blue
@@ -35,7 +33,6 @@ Terry McLaurin,WR,Washington Commanders,Red
 Jaylen Waddle,WR,Miami Dolphins,Red
 DK Metcalf,WR,Seattle Seahawks,Red
 Tee Higgins,WR,Cincinnati Bengals,Red
-
 Travis Kelce,TE,Kansas City Chiefs,Blue
 Mark Andrews,TE,Baltimore Ravens,Blue
 George Kittle,TE,San Francisco 49ers,Blue
@@ -46,7 +43,6 @@ Darren Waller,TE,New York Giants,Red
 Hunter Henry,TE,New England Patriots,Red
 David Njoku,TE,Cleveland Browns,Red
 Dawson Knox,TE,Buffalo Bills,Red
-
 Trent Williams,T,San Francisco 49ers,Blue
 Lane Johnson,T,Philadelphia Eagles,Blue
 Tristan Wirfs,T,Tampa Bay Buccaneers,Blue
@@ -59,8 +55,6 @@ Ryan Ramczyk,T,New Orleans Saints,Red
 Jordan Mailata,T,Philadelphia Eagles,Red
 David Bakhtiari,T,Green Bay Packers,Red
 Penei Sewell,T,Detroit Lions,Red
-*******************************************
-
 Zack Martin,G,Dallas Cowboys,Blue
 Joel Bitonio,G,Cleveland Browns,Blue
 Joe Thuney,G,Kansas City Chiefs,Blue
@@ -71,7 +65,6 @@ Trey Smith,G,Kansas City Chiefs,Red
 Wyatt Teller,G,Cleveland Browns,Red
 Cody Whitehair,G,Chicago Bears,Red
 Michael Onwenu,G,New England Patriots,Red
-
 Creed Humphrey,C,Kansas City Chiefs,Blue
 Jason Kelce,C,Philadelphia Eagles,Blue
 David Andrews,C,New England Patriots,Blue
@@ -80,7 +73,6 @@ Bradley Bozeman,C,Carolina Panthers,Red
 Tyler Linderbaum,C,Baltimore Ravens,Red
 Erik McCoy,C,New Orleans Saints,Red
 Frank Ragnow,C,Detroit Lions,Red
-
 Nick Bosa,EDGE,San Francisco 49ers,Blue
 Myles Garrett,EDGE,Cleveland Browns,Blue
 TJ Watt,EDGE,Pittsburgh Steelers,Blue
@@ -92,7 +84,6 @@ Brian Burns,EDGE,Carolina Panthers,Red
 Jaelan Phillips,EDGE,Miami Dolphins,Red
 Matthew Judon,EDGE,New England Patriots,Red
 Danielle Hunter,EDGE,Minnesota Vikings,Red
-
 Aaron Donald,DT,Los Angeles Rams,Blue
 Chris Jones,DT,Kansas City Chiefs,Blue
 Jeffrey Simmons,DT,Tennessee Titans,Blue
@@ -103,7 +94,6 @@ Dexter Lawrence,DT,New York Giants,Red
 Daron Payne,DT,Washington Commanders,Red
 Deforest Buckner,DT,San Francisco 49ers,Red
 Jonathan Allen,DT,Washington Commanders,Red
-
 Fred Warner,LB,San Francisco 49ers,Blue
 Roquan Smith,LB,Baltimore Ravens,Blue
 Demario Davis,LB,New Orleans Saints,Blue
@@ -114,7 +104,6 @@ Shaquille Leonard,LB,Indianapolis Colts,Red
 Nick Bolton,LB,Kansas City Chiefs,Red
 Lavonte David,LB,Tampa Bay Buccaneers,Red
 Dre Greenlaw,LB,San Francisco 49ers,Red
-
 Sauce Gardner,CB,New York Jets,Blue
 Marshon Lattimore,New Orleans Saints,Blue
 Patrick Surtain,CB,Denver Broncos,Blue
@@ -130,13 +119,13 @@ Jaycee Horn,CB,Carolina Panthers,Red
 James Bradberry,CB,Philadelphia Eagles,Red
 Stephon Gilmore,CB,Dallas Cowboys,Red
 Mike Hilton,CB,Cincinnati Bengals,Red
-
 Derwin James,S,Los Angeles Chargers,Blue
 Minkah Fitzpatrick,S,Pittsburgh Steelers,Blue
 Kevin Byard,S,Tennessee Titans,Blue
 Buddha Baker,S,Arizona Cardinals,Blue
 Antoine Winfield,S,Tampa Bay Buccaneers,Blue
-
 Talanoa Hufanga,S,San Francisco 49ers,Red
 Kyle Dugger,S,New England Patriots,Red
 Tyrann Mathieu,S,Arizona Cardinals,Red
+Jordan Poyer,S,Buffalo Bills,Red
+Justin Simmons,S,Denver Broncos,Red
