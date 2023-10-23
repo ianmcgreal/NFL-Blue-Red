@@ -26,7 +26,7 @@ public class LeagueCLI {
 
     public static void askForChipWeights() {
         System.out.println("This program evaluates NFL teams by means of their players appearing on a top 10 list for" +
-                " their respective position.");
+                " their respective positions.");
         System.out.println("Generally, a top 5 player is considered a \"blue chip\", while a player" +
                 " in the 6-10 range is considered a \"red chip.\"");
         System.out.println("To carry out these calculations, you must assign a point value to the \"blue chip\"" +

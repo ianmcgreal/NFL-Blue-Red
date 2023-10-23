@@ -17,7 +17,7 @@ Josh Jacobs,RB,Las Vegas Raiders,Red
 Austin Ekeler,RB,Los Angeles Chargers,Red
 Tony Pollard,RB,Dallas Cowboys,Red
 Dalvin Cook,RB,New York Jets,Red
-Bijan Robinson,Atlanta Falcons,Red
+Bijan Robinson,RB,Atlanta Falcons,Red
 Justin Jefferson,WR,Minnesota Vikings,Blue
 Davante Adams,WR,Las Vegas Raiders,Blue
 Jamarr Chase,WR,Cincinnati Bengals,Blue
@@ -39,7 +39,7 @@ Mark Andrews,TE,Baltimore Ravens,Blue
 Dallas Goedert,TE,Philadelphia Eagles,Red
 Darren Waller,TE,New York Giants,Red
 TJ Hockenson,TE,Detroit Lions,Red
-Kyle Pitts,TE,Atlanta Falcon,Red
+Kyle Pitts,TE,Atlanta Falcons,Red
 David Njoku,TE,Cleveland Browns,Red
 Pat Freiermuth,TE,Pittsburgh Steelers,Red
 Dalton Schultz,TE,Dallas Cowboys,Red
@@ -54,7 +54,7 @@ Christian Darrisaw,T,Minnesota Vikings,Red
 Ryan Ramczyk,T,New Orleans Saints,Red
 Jordan Mailata,T,Philadelphia Eagles,Red
 Penei Sewell,T,Detroit Lions,Red
-Ronnie Stanley,T,Baltimore Raven,Red
+Ronnie Stanley,T,Baltimore Ravens,Red
 David Bakhtiari,T,Green Bay Packers,Red
 Zack Martin,G,Dallas Cowboys,Blue
 Joel Bitonio,G,Cleveland Browns,Blue
@@ -107,7 +107,7 @@ Dre Greenlaw,LB,San Francisco 49ers,Red
 Sauce Gardner,CB,New York Jets,Blue
 Jaire Alexander,CB,Green Bay Packers,Blue
 Patrick Surtain,CB,Denver Broncos,Blue
-Marshon Lattimore,New Orleans Saints,Blue
+Marshon Lattimore,CB,New Orleans Saints,Blue
 Darius Slay,CB,Philadelphia Eagles,Blue
 Denzel Ward,CB,Cleveland Browns,Blue
 Tariq Woolen,CB,Seattle Seahawks,Red

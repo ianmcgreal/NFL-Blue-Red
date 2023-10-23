@@ -8,6 +8,7 @@ import static java.util.Map.entry;
 public class League {
 
     private Map<String, Team> leagueTeams;
+    private int numOfLeaguePlayers;
 
     public League() {
         this.leagueTeams = Map.ofEntries(
@@ -60,7 +61,9 @@ public class League {
     }
 
     public void addPlayerToLeague(String team, Player player) {
+        System.out.println(team + " " + player.getName());
         leagueTeams.get(team).addPlayerToTeam(player);
+        numOfLeaguePlayers++;
     }
 
     public Map<String, Team> getLeagueTeams() {
@@ -75,6 +78,7 @@ public class League {
             leagueTeams.get(team).printPlayers();
             System.out.println();
         }
+//        System.out.println(numOfLeaguePlayers);
     }
 
 }
