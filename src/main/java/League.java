@@ -61,7 +61,7 @@ public class League {
     }
 
     public void addPlayerToLeague(String team, Player player) {
-        System.out.println(team + " " + player.getName());
+        System.out.println(team + " - " + player.getName());
         leagueTeams.get(team).addPlayerToTeam(player);
         numOfLeaguePlayers++;
     }
@@ -70,7 +70,7 @@ public class League {
         return this.leagueTeams;
     }
 
-    public void printLeague() {
+    public void printLeagueTeamsWithRosters() {
         for (String team : leagueTeams.keySet()) {
             System.out.println("*******************************");
             System.out.println(team);
@@ -78,7 +78,10 @@ public class League {
             leagueTeams.get(team).printPlayers();
             System.out.println();
         }
-//        System.out.println(numOfLeaguePlayers);
+    }
+
+    public void printNumPlayers() {
+        System.out.println("Total number of players in league: " + numOfLeaguePlayers);
     }
 
 }

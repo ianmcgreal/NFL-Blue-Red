@@ -14,7 +14,7 @@ public class LeagueCLI {
     public static void run() {
         nfl.readIn(askForInputFile());
         askForChipWeights();
-        nfl.printLeague();
+        nfl.printLeagueTeamsWithRosters();
     }
 
     public static File askForInputFile() {
@@ -66,27 +66,27 @@ public class LeagueCLI {
         System.out.print(">>> ");
         int redWR = userInput.nextInt();
 
-        System.out.println("How many points should a blue chip tackle be worth?");
+        System.out.println("How many points should a blue chip T be worth?");
         System.out.print(">>> ");
         int blueT = userInput.nextInt();
 
-        System.out.println("How many points should a red chip tackle be worth?");
+        System.out.println("How many points should a red chip T be worth?");
         System.out.print(">>> ");
         int redT = userInput.nextInt();
 
-        System.out.println("How many points should a blue chip guard be worth?");
+        System.out.println("How many points should a blue chip G be worth?");
         System.out.print(">>> ");
         int blueG = userInput.nextInt();
 
-        System.out.println("How many points should a red chip guard be worth?");
+        System.out.println("How many points should a red chip G be worth?");
         System.out.print(">>> ");
         int redG = userInput.nextInt();
 
-        System.out.println("How many points should a blue chip center be worth?");
+        System.out.println("How many points should a blue chip C be worth?");
         System.out.print(">>> ");
         int blueC = userInput.nextInt();
 
-        System.out.println("How many points should a red chip center be worth?");
+        System.out.println("How many points should a red chip C be worth?");
         System.out.print(">>> ");
         int redC = userInput.nextInt();
 

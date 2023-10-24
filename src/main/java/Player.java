@@ -1,9 +1,7 @@
 public class Player {
 
     private final String name;
-
     private Position position;
-
     private boolean isBlue;
 
     public Player(String name, String position, boolean isBlue) {
@@ -14,28 +12,28 @@ public class Player {
                 || position.equalsIgnoreCase("quarter_back")
                 || position.equalsIgnoreCase("QB"))
         {
-            this.position = Position.QUARTERBACK;
+            this.position = Position.QB;
         }
 
         else if (position.equalsIgnoreCase("running back")
                 || position.equalsIgnoreCase("running_back")
                 || position.equalsIgnoreCase("RB"))
         {
-            this.position = Position.RUNNING_BACK;
+            this.position = Position.RB;
         }
 
         else if (position.equalsIgnoreCase("tight end")
                 || position.equalsIgnoreCase("tight_end")
                 || position.equalsIgnoreCase("TE"))
         {
-            this.position = Position.TIGHT_END;
+            this.position = Position.TE;
         }
 
         else if (position.equalsIgnoreCase("wide receiver")
                 || position.equalsIgnoreCase("wide_receiver")
                 || position.equalsIgnoreCase("WR"))
         {
-            this.position = Position.WIDE_RECEIVER;
+            this.position = Position.WR;
         }
 
         else if (position.equalsIgnoreCase("tackle")
@@ -46,7 +44,7 @@ public class Player {
                 || position.equalsIgnoreCase("right tackle")
                 || position.equalsIgnoreCase("right_tackle")
                 || position.equalsIgnoreCase("RT")) {
-            this.position = Position.TACKLE;
+            this.position = Position.T;
         }
 
         else if (position.equalsIgnoreCase("guard")
@@ -58,13 +56,13 @@ public class Player {
                 || position.equalsIgnoreCase("right_guard")
                 || position.equalsIgnoreCase("RG"))
         {
-            this.position = Position.GUARD;
+            this.position = Position.G;
         }
 
         else if (position.equalsIgnoreCase("center")
                 || position.equalsIgnoreCase("C"))
         {
-            this.position = Position.CENTER;
+            this.position = Position.C;
         }
 
         else if (position.equalsIgnoreCase("pass rusher")
@@ -81,7 +79,7 @@ public class Player {
                 || position.equalsIgnoreCase("right_end")
                 || position.equalsIgnoreCase("RE"))
         {
-            this.position = Position.EDGE_RUSHER;
+            this.position = Position.EDGE;
         }
 
         else if (position.equalsIgnoreCase("defensive tackle")
@@ -90,7 +88,7 @@ public class Player {
                 || position.equalsIgnoreCase("interior_defensive_tackle")
                 || position.equalsIgnoreCase("DT"))
         {
-            this.position = Position.DEFENSIVE_TACKLE;
+            this.position = Position.DT;
         }
 
         else if (position.equalsIgnoreCase("linebacker")
@@ -102,7 +100,7 @@ public class Player {
                 || position.equalsIgnoreCase("middle line backer")
                 || position.equalsIgnoreCase("middle_line_backer"))
         {
-            this.position = Position.LINEBACKER;
+            this.position = Position.LB;
         }
 
         else if (position.equalsIgnoreCase("cornerback")
@@ -111,7 +109,7 @@ public class Player {
                 || position.equalsIgnoreCase("slot corner")
                 || position.equalsIgnoreCase("slot_corner"))
         {
-            this.position = Position.CORNERBACK;
+            this.position = Position.CB;
         }
 
         else if (position.equalsIgnoreCase("safety")
@@ -123,7 +121,7 @@ public class Player {
                 || position.equalsIgnoreCase("strong_safety")
                 || position.equalsIgnoreCase("SS"))
         {
-            this.position = Position.SAFETY;
+            this.position = Position.S;
         }
     }
 
@@ -134,19 +132,23 @@ public class Player {
     public Position getPosition() {
         return position;
     }
+
+    public boolean isBlue() {
+        return isBlue;
+    }
 }
 
 enum Position {
-    QUARTERBACK,
-    RUNNING_BACK,
-    TIGHT_END,
-    WIDE_RECEIVER,
-    TACKLE,
-    GUARD,
-    CENTER,
-    DEFENSIVE_TACKLE,
-    EDGE_RUSHER,
-    LINEBACKER,
-    CORNERBACK,
-    SAFETY
+    QB,
+    RB,
+    TE,
+    WR,
+    T,
+    G,
+    C,
+    DT,
+    EDGE,
+    LB,
+    CB,
+    S
 }
