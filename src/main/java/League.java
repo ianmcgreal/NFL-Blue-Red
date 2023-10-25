@@ -47,6 +47,7 @@ public class League {
         );
     }
 
+    // Revisit, not working as intended
     public void readIn(File input) {
         try (Scanner fileReader = new Scanner(input)) {
             while (fileReader.hasNextLine()) {
@@ -55,13 +56,12 @@ public class League {
                 this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1], blueChip));
             }
         } catch (FileNotFoundException e) {
-            System.err.println("File could not be found");
+            System.err.println("File could not be found.");
             LeagueCLI.askForInputFile();
         }
     }
 
     public void addPlayerToLeague(String team, Player player) {
-        System.out.println(team + " - " + player.getName());
         leagueTeams.get(team).addPlayerToTeam(player);
         numOfLeaguePlayers++;
     }

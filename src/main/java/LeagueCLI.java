@@ -17,117 +17,84 @@ public class LeagueCLI {
         nfl.printLeagueTeamsWithRosters();
     }
 
+    // Revisit, not working as intended
     public static File askForInputFile() {
         System.out.println("Please enter the path of the input file");
         System.out.print(">>> ");
         String inputPath = userInput.nextLine();
-        return new File(inputPath);
+        try {
+            return new File(inputPath);
+        } catch (NullPointerException e) {
+            System.err.println("Null file path.");
+            askForInputFile();
+        }
+        return null;
     }
 
     public static void askForChipWeights() {
-        System.out.println("This program evaluates NFL teams by means of their players appearing on a top 10 list for" +
+        System.out.println("\nThis program evaluates NFL teams by means of their players appearing on a top 10 list for" +
                 " their respective positions.");
+        pause();
         System.out.println("Generally, a top 5 player is considered a \"blue chip\", while a player" +
                 " in the 6-10 range is considered a \"red chip.\"");
+        pause();
         System.out.println("To carry out these calculations, you must assign a point value to the \"blue chip\"" +
-                " and a value to the \"red chip.\" The blue chip value must be greater than the red chip value.");
-        System.out.println("For example, a blue chip could be worth 5 points while a red chip is worth 3. However," +
+                " and a value to the \"red chip.\" for each position. The blue chip value must be greater than the red chip value.");
+        pause();
+        System.out.println("For example, a blue chip G could be worth 5 points while a red chip G is worth 3. However," +
                 " maybe a blue chip QB is worth 7 while a red chip QB is worth 4.");
 
-        System.out.println("How many points should a blue chip QB be worth?");
-        System.out.print(">>> ");
-        int blueQB = userInput.nextInt();
+        int blueQB = askPositionalBlueWeight(Position.QB);
+        int redQB = askPositionalRedWeight(Position.QB);
 
-        System.out.println("How many points should a red chip QB be worth?");
-        System.out.print(">>> ");
-        int redQB = userInput.nextInt();
+        int blueRB = askPositionalBlueWeight(Position.RB);
+        int redRB = askPositionalRedWeight(Position.RB);
 
-        System.out.println("How many points should a blue chip RB be worth?");
-        System.out.print(">>> ");
-        int blueRB = userInput.nextInt();
+        int blueTE = askPositionalBlueWeight(Position.TE);
+        int redTE = askPositionalRedWeight(Position.TE);
 
-        System.out.println("How many points should a red chip RB be worth?");
-        System.out.print(">>> ");
-        int redRB = userInput.nextInt();
+        int blueWR = askPositionalBlueWeight(Position.WR);
+        int redWR = askPositionalRedWeight(Position.WR);
 
-        System.out.println("How many points should a blue chip TE be worth?");
-        System.out.print(">>> ");
-        int blueTE = userInput.nextInt();
+        int blueT = askPositionalBlueWeight(Position.T);
+        int redWT = askPositionalRedWeight(Position.T);
 
-        System.out.println("How many points should a red chip TE be worth?");
-        System.out.print(">>> ");
-        int redTE = userInput.nextInt();
+        int blueG = askPositionalBlueWeight(Position.G);
+        int redG = askPositionalRedWeight(Position.G);
 
-        System.out.println("How many points should a blue chip WR be worth?");
-        System.out.print(">>> ");
-        int blueWR = userInput.nextInt();
+        int blueC = askPositionalBlueWeight(Position.C);
+        int redC = askPositionalRedWeight(Position.C);
 
-        System.out.println("How many points should a red chip WR be worth?");
-        System.out.print(">>> ");
-        int redWR = userInput.nextInt();
+        int blueEDGE = askPositionalBlueWeight(Position.EDGE);
+        int redEDGE = askPositionalRedWeight(Position.EDGE);
 
-        System.out.println("How many points should a blue chip T be worth?");
-        System.out.print(">>> ");
-        int blueT = userInput.nextInt();
+        int blueDT = askPositionalBlueWeight(Position.DT);
+        int redDT = askPositionalRedWeight(Position.DT);
 
-        System.out.println("How many points should a red chip T be worth?");
-        System.out.print(">>> ");
-        int redT = userInput.nextInt();
+        int blueLB = askPositionalBlueWeight(Position.LB);
+        int redLB = askPositionalRedWeight(Position.LB);
 
-        System.out.println("How many points should a blue chip G be worth?");
-        System.out.print(">>> ");
-        int blueG = userInput.nextInt();
+        int blueCB = askPositionalBlueWeight(Position.CB);
+        int redCB = askPositionalRedWeight(Position.CB);
 
-        System.out.println("How many points should a red chip G be worth?");
-        System.out.print(">>> ");
-        int redG = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip C be worth?");
-        System.out.print(">>> ");
-        int blueC = userInput.nextInt();
-
-        System.out.println("How many points should a red chip C be worth?");
-        System.out.print(">>> ");
-        int redC = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip EDGE be worth?");
-        System.out.print(">>> ");
-        int blueEDGE = userInput.nextInt();
-
-        System.out.println("How many points should a red chip EDGE be worth?");
-        System.out.print(">>> ");
-        int redEDGE = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip DT be worth?");
-        System.out.print(">>> ");
-        int blueDT = userInput.nextInt();
-
-        System.out.println("How many points should a red chip DT be worth?");
-        System.out.print(">>> ");
-        int redDT = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip LB be worth?");
-        System.out.print(">>> ");
-        int blueLB = userInput.nextInt();
-
-        System.out.println("How many points should a red chip LB be worth?");
-        System.out.print(">>> ");
-        int redLB = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip CB be worth?");
-        System.out.print(">>> ");
-        int blueCB = userInput.nextInt();
-
-        System.out.println("How many points should a red chip CB be worth?");
-        System.out.print(">>> ");
-        int redCB = userInput.nextInt();
-
-        System.out.println("How many points should a blue chip S be worth?");
-        System.out.print(">>> ");
-        int blueS = userInput.nextInt();
-
-        System.out.println("How many points should a red chip S be worth?");
-        System.out.print(">>> ");
-        int redS = userInput.nextInt();
+        int blueS = askPositionalBlueWeight(Position.S);
+        int redS = askPositionalRedWeight(Position.S);
     }
+
+    public static void pause() {
+        System.out.println("Press Enter to continue...");
+        userInput.nextLine();
+    }
+
+    public static int askPositionalBlueWeight(Position position) {
+        System.out.print("How much should a blue chip " + position + " be worth? >>> ");
+        return userInput.nextInt();
+    }
+
+    public static int askPositionalRedWeight(Position position) {
+        System.out.print("How much should a red chip " + position + " be worth? >>> ");
+        return userInput.nextInt();
+    }
+
+
 }
