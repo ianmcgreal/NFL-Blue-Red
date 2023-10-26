@@ -47,7 +47,6 @@ public class League {
         );
     }
 
-    // Revisit, not working as intended
     public void readIn(File input) {
         try (Scanner fileReader = new Scanner(input)) {
             while (fileReader.hasNextLine()) {

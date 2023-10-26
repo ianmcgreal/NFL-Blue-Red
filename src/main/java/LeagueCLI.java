@@ -17,18 +17,24 @@ public class LeagueCLI {
         nfl.printLeagueTeamsWithRosters();
     }
 
-    // Revisit, not working as intended
     public static File askForInputFile() {
-        System.out.println("Please enter the path of the input file");
-        System.out.print(">>> ");
-        String inputPath = userInput.nextLine();
-        try {
-            return new File(inputPath);
-        } catch (NullPointerException e) {
-            System.err.println("Null file path.");
-            askForInputFile();
-        }
-        return null;
+//        System.out.println("Please enter the path of the input file");
+//        System.out.print(">>> ");
+//        String inputPath = userInput.nextLine();
+//        try {
+//            return new File(inputPath);
+//        } catch (NullPointerException e) {
+//            System.err.println("Null file path.");
+//            askForInputFile();
+//        }
+        File inputFile;
+        do {
+            System.out.println("Please enter the path of the input file");
+            System.out.print(">>> ");
+            String inputPath = userInput.nextLine();
+            inputFile = new File(inputPath);
+        } while (!inputFile.exists());
+        return inputFile;
     }
 
     public static void askForChipWeights() {
