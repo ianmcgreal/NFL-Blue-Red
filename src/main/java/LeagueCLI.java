@@ -31,7 +31,7 @@ public class LeagueCLI {
     public static void run() {
         nfl.readIn(askForInputFile());
         askForChipWeights();
-        nfl.printLeagueTeamsWithRosters();
+        nfl.printAllRosters();
     }
 
     public static File askForInputFile() {

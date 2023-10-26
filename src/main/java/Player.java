@@ -1,8 +1,21 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Player {
 
     private final String name;
     private Position position;
     private boolean isBlue;
+    private static Set<Position> offensePositions = new HashSet<>(Arrays.asList(
+            Position.QB,
+            Position.RB,
+            Position.TE,
+            Position.WR,
+            Position.T,
+            Position.G,
+            Position.C
+    ));
 
     public Player(String name, String position, boolean isBlue) {
         this.name = name;
@@ -135,6 +148,10 @@ public class Player {
 
     public boolean isBlue() {
         return isBlue;
+    }
+
+    public boolean isOffense() {
+        return offensePositions.contains(position);
     }
 }
 

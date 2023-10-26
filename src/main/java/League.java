@@ -7,7 +7,7 @@ import static java.util.Map.entry;
 
 public class League {
 
-    private Map<String, Team> leagueTeams;
+    private final Map<String, Team> leagueTeams;
     private int numOfLeaguePlayers;
 
     public League() {
@@ -69,7 +69,11 @@ public class League {
         return this.leagueTeams;
     }
 
-    public void printLeagueTeamsWithRosters() {
+    public int getNumOfLeaguePlayers() {
+        return numOfLeaguePlayers;
+    }
+
+    public void printAllRosters() {
         for (String team : leagueTeams.keySet()) {
             System.out.println("*******************************");
             System.out.println(team);
@@ -78,11 +82,5 @@ public class League {
             System.out.println();
         }
     }
-
-
-    public void printNumPlayers() {
-        System.out.println("Total number of players in league: " + numOfLeaguePlayers);
-    }
-
 }
 
