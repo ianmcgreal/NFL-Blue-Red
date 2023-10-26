@@ -1,11 +1,28 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class LeagueCLI {
 
     private static final Scanner userInput = new Scanner(System.in);
     private static League nfl = new League();
+
+//    private static int blueQB, redQB;
+//    private static int blueRB, redRB;
+//    private static int blueTE, redTE;
+//    private static int blueWR, redWR;
+//    private static int blueT, redT;
+//    private static int blueG, redG;
+//    private static int blueC, redC;
+//    private static int blueEDGE, redEDGE;
+//    private static int blueDT, redDT;
+//    private static int blueLB, redLB;
+//    private static int blueCB, redCB;
+//    private static int blueS, redS;
+
+    private static Map<Position, Integer[]> positionWeights;
 
     public static void main(String[] args) {
         run();
@@ -50,41 +67,66 @@ public class LeagueCLI {
         System.out.println("For example, a blue chip G could be worth 5 points while a red chip G is worth 3. However," +
                 " maybe a blue chip QB is worth 7 while a red chip QB is worth 4.");
 
-        int blueQB = askPositionalBlueWeight(Position.QB);
-        int redQB = askPositionalRedWeight(Position.QB);
+        Integer[] qb = { askPositionalBlueWeight(Position.QB), askPositionalRedWeight(Position.QB) };
+        positionWeights.put(Position.QB, qb);
+//        blueQB = askPositionalBlueWeight(Position.QB);
+//        redQB = askPositionalRedWeight(Position.QB);
 
-        int blueRB = askPositionalBlueWeight(Position.RB);
-        int redRB = askPositionalRedWeight(Position.RB);
+        Integer[] rb = { askPositionalBlueWeight(Position.RB), askPositionalRedWeight(Position.RB) };
+        positionWeights.put(Position.RB, rb);
+//        blueRB = askPositionalBlueWeight(Position.RB);
+//        redRB = askPositionalRedWeight(Position.RB);
 
-        int blueTE = askPositionalBlueWeight(Position.TE);
-        int redTE = askPositionalRedWeight(Position.TE);
+        Integer[] te = { askPositionalBlueWeight(Position.TE), askPositionalRedWeight(Position.TE) };
+        positionWeights.put(Position.TE, te);
+//        blueTE = askPositionalBlueWeight(Position.TE);
+//        redTE = askPositionalRedWeight(Position.TE);
 
-        int blueWR = askPositionalBlueWeight(Position.WR);
-        int redWR = askPositionalRedWeight(Position.WR);
+        Integer[] wr = { askPositionalBlueWeight(Position.WR), askPositionalRedWeight(Position.WR) };
+        positionWeights.put(Position.WR, wr);
+//        blueWR = askPositionalBlueWeight(Position.WR);
+//        redWR = askPositionalRedWeight(Position.WR);
 
-        int blueT = askPositionalBlueWeight(Position.T);
-        int redWT = askPositionalRedWeight(Position.T);
+        Integer[] t = { askPositionalBlueWeight(Position.T), askPositionalRedWeight(Position.T) };
+        positionWeights.put(Position.T, t);
+//        blueT = askPositionalBlueWeight(Position.T);
+//        redT = askPositionalRedWeight(Position.T);
 
-        int blueG = askPositionalBlueWeight(Position.G);
-        int redG = askPositionalRedWeight(Position.G);
+        Integer[] g = { askPositionalBlueWeight(Position.G), askPositionalRedWeight(Position.G) };
+        positionWeights.put(Position.G, g);
+//        blueG = askPositionalBlueWeight(Position.G);
+//        redG = askPositionalRedWeight(Position.G);
 
-        int blueC = askPositionalBlueWeight(Position.C);
-        int redC = askPositionalRedWeight(Position.C);
+        Integer[] c = { askPositionalBlueWeight(Position.C), askPositionalRedWeight(Position.C) };
+        positionWeights.put(Position.C, c);
+//        blueC = askPositionalBlueWeight(Position.C);
+//        redC = askPositionalRedWeight(Position.C);
 
-        int blueEDGE = askPositionalBlueWeight(Position.EDGE);
-        int redEDGE = askPositionalRedWeight(Position.EDGE);
+        Integer[] edge = { askPositionalBlueWeight(Position.EDGE), askPositionalRedWeight(Position.EDGE) };
+        positionWeights.put(Position.EDGE, edge);
+//        blueEDGE = askPositionalBlueWeight(Position.EDGE);
+//        redEDGE = askPositionalRedWeight(Position.EDGE);
 
-        int blueDT = askPositionalBlueWeight(Position.DT);
-        int redDT = askPositionalRedWeight(Position.DT);
+        Integer[] dt = { askPositionalBlueWeight(Position.DT), askPositionalRedWeight(Position.DT) };
+        positionWeights.put(Position.DT, dt);
+//        blueDT = askPositionalBlueWeight(Position.DT);
+//        redDT = askPositionalRedWeight(Position.DT);
 
-        int blueLB = askPositionalBlueWeight(Position.LB);
-        int redLB = askPositionalRedWeight(Position.LB);
+        Integer[] lb = { askPositionalBlueWeight(Position.LB), askPositionalRedWeight(Position.LB) };
+        positionWeights.put(Position.LB, lb);
+//        blueLB = askPositionalBlueWeight(Position.LB);
+//        redLB = askPositionalRedWeight(Position.LB);
 
-        int blueCB = askPositionalBlueWeight(Position.CB);
-        int redCB = askPositionalRedWeight(Position.CB);
+        Integer[] cb = { askPositionalBlueWeight(Position.CB), askPositionalRedWeight(Position.CB) };
+        positionWeights.put(Position.CB, cb);
+//        blueCB = askPositionalBlueWeight(Position.CB);
+//        redCB = askPositionalRedWeight(Position.CB);
 
-        int blueS = askPositionalBlueWeight(Position.S);
-        int redS = askPositionalRedWeight(Position.S);
+        Integer[] s = { askPositionalBlueWeight(Position.S), askPositionalRedWeight(Position.S) };
+        positionWeights.put(Position.S, s);
+//        blueS = askPositionalBlue Weight(Position.S);
+//        redS = askPositionalRedWeight(Position.S);
+        System.err.println("************** MAP SIZE = " + positionWeights.size());
     }
 
     public static void pause() {
@@ -94,13 +136,27 @@ public class LeagueCLI {
 
     public static int askPositionalBlueWeight(Position position) {
         System.out.print("How much should a blue chip " + position + " be worth? >>> ");
+        while (!userInput.hasNextInt()) {
+            System.err.println("Value entered is not an integer");
+            System.out.print("Please enter an integer for the value of a blue chip " + position + " >>> ");
+            userInput.next();
+        }
         return userInput.nextInt();
+
+//        try {
+//            System.out.print("How much should a blue chip " + position + " be worth? >>> ");
+//            return userInput.nextInt();
+//        }
+//        catch (InputMismatchException e) {
+//            System.err.print("Entered value was not an integer value. Please try again.");
+//            return askPositionalBlueWeight(position);
+//        }
+
     }
 
     public static int askPositionalRedWeight(Position position) {
         System.out.print("How much should a red chip " + position + " be worth? >>> ");
         return userInput.nextInt();
     }
-
 
 }

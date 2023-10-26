@@ -79,6 +79,7 @@ public class League {
         }
     }
 
+
     public void printNumPlayers() {
         System.out.println("Total number of players in league: " + numOfLeaguePlayers);
     }
