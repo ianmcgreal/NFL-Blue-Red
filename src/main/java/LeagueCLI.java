@@ -7,8 +7,6 @@ public class LeagueCLI {
 
     private static final Scanner userInput = new Scanner(System.in);
     private static League nfl = new League();
-
-
     private static Map<Position, Integer[]> positionWeights = new HashMap<>();
 
     public static void main(String[] args) {
@@ -17,9 +15,16 @@ public class LeagueCLI {
 
     public static void run() {
         intro();
+        if (isEnteringOwnFile()) {
+            nfl.readIn(askForInputFile());
+        }
+        else {
+            nfl.readIn(ianOrKenny());
+        }
         nfl.readIn(askForInputFile());
         askForChipWeights();
-        nfl.printAllRosters();
+        printWeights();
+        nfl.printAllLeagueRatings(positionWeights);
     }
 
     public static void intro() {
@@ -30,6 +35,40 @@ public class LeagueCLI {
                 " in the 6-10 range is considered a \"red chip.\"");
         pause();
         System.out.println("This program requires a csv file of player rankings.");
+    }
+
+    public static boolean isEnteringOwnFile() {
+        System.out.println("Would you like to enter your own csv file or use an existing preloaded file?");
+        System.out.println("1) Enter CSV file");
+        System.out.println("2) Use preloaded file");
+        String response = userInput.nextLine();
+        while (!response.equals("1") && !response.equals("2")) {
+            System.out.println("\nPlease enter (1) for option 1, or (2) for option 2.");
+            response = userInput.nextLine();
+        }
+        if (response.equals("1")) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public static File ianOrKenny() {
+        System.out.println("Would you like to use Ian's rankings (1) or Kenny's (2) ?");
+        System.out.println("1) Ian");
+        System.out.println("2) Kenny");
+        String response = userInput.nextLine();
+        while (!response.equals("1") && !response.equals("2")) {
+            System.out.println("\nPlease enter (1) for option 1, or (2) for option 2.");
+            response = userInput.nextLine();
+        }
+        if (response.equals("1")) {
+            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\IanPlayerRankings");
+        }
+        else {
+            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\KennyPlayerRankings");
+        }
     }
 
     public static File askForInputFile() {
@@ -48,10 +87,9 @@ public class LeagueCLI {
     }
 
     public static void askForChipWeights() {
-
         System.out.println("\nTo carry out these calculations, you must assign a point value to the \"blue chip\"" +
                 " and a value to the \"red chip\" for each position. The blue chip value must be greater than the red chip value.");
-        System.out.println("For example, a blue chip G could be worth 5 points while a red chip G is worth 3. However," +
+        System.out.println("\nFor example, a blue chip G could be worth 5 points while a red chip G is worth 3. However," +
                 " maybe a blue chip QB is worth 7 while a red chip QB is worth 4.\n");
 
         Integer[] qb = { askPositionalBlueWeight(Position.QB), askPositionalRedWeight(Position.QB) };
@@ -100,6 +138,13 @@ public class LeagueCLI {
 
         Integer[] s = { askPositionalBlueWeight(Position.S), askPositionalRedWeight(Position.S) };
         positionWeights.put(Position.S, s);
+    }
+
+    private static void printWeights() {
+        for (Position p : Position.values()) {
+            System.out.println("\nBlue " + p + ": " + positionWeights.get(p)[0]);
+            System.out.println("Red " + p + ": " + positionWeights.get(p)[1]);
+        }
     }
 
     public static void pause() {

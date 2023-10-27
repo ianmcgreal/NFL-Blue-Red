@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Team {
 
@@ -15,43 +16,47 @@ public class Team {
         }
     }
 
-    public int getTotalScore(int blue, int red) {
+    public int size() {
+        return roster.size();
+    }
+
+    public int rateTeam(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (player.isBlue()) {
-                score += blue;
+                score += positionWeights.get(player.getPosition())[0];
             }
             else {
-                score += red;
+                score += positionWeights.get(player.getPosition())[1];
             }
         }
         return score;
     }
 
-    public int getOffenseScore(int blue, int red) {
+    public int rateOffense(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (player.isOffense()) {
                 if (player.isBlue()) {
-                    score += blue;
+                    score += positionWeights.get(player.getPosition())[0];
                 }
                 else {
-                    score += red;
+                    score += positionWeights.get(player.getPosition())[1];
                 }
             }
         }
         return score;
     }
 
-    public int getDefenseScore(int blue, int red) {
+    public int rateDefense(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (!player.isOffense()) {
                 if (player.isBlue()) {
-                    score += blue;
+                    score += positionWeights.get(player.getPosition())[0];
                 }
                 else {
-                    score += red;
+                    score += positionWeights.get(player.getPosition())[1];
                 }
             }
         }

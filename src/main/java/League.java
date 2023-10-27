@@ -60,6 +60,20 @@ public class League {
         }
     }
 
+    public void printAllLeagueRatings(Map<Position, Integer[]> positionWeights) {
+        for (String team : leagueTeams.keySet()) {
+            Team thisTeam = leagueTeams.get(team);
+            System.out.println("\n*******************************");
+            System.out.println(team);
+            System.out.println("Overall: " + thisTeam.rateTeam(positionWeights));
+            System.out.println("Offense: " + thisTeam.rateOffense(positionWeights));
+            System.out.println("Defense: " + thisTeam.rateDefense(positionWeights));
+            System.out.println("Number of players: " + thisTeam.size());
+            System.out.println("*******************************");
+            System.out.println("*******************************");
+        }
+    }
+
     public void addPlayerToLeague(String team, Player player) {
         leagueTeams.get(team).addPlayerToTeam(player);
         numOfLeaguePlayers++;
