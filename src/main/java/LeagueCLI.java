@@ -21,10 +21,12 @@ public class LeagueCLI {
         else {
             nfl.readIn(ianOrKenny());
         }
-        nfl.readIn(askForInputFile());
         askForChipWeights();
         printWeights();
-        nfl.printAllLeagueRatings(positionWeights);
+        //nfl.printAllLeagueRatings(positionWeights);
+        nfl.printTeamRatingsInOverallOrder(positionWeights);
+        nfl.printOffenseRatingsInOverallOrder(positionWeights);
+        nfl.printDefenseRatingsInOverallOrder(positionWeights);
     }
 
     public static void intro() {
@@ -43,7 +45,7 @@ public class LeagueCLI {
         System.out.println("2) Use preloaded file");
         String response = userInput.nextLine();
         while (!response.equals("1") && !response.equals("2")) {
-            System.out.println("\nPlease enter (1) for option 1, or (2) for option 2.");
+            System.out.println("Please enter (1) for option 1, or (2) for option 2.");
             response = userInput.nextLine();
         }
         if (response.equals("1")) {
@@ -51,23 +53,6 @@ public class LeagueCLI {
         }
         else {
             return false;
-        }
-    }
-
-    public static File ianOrKenny() {
-        System.out.println("Would you like to use Ian's rankings (1) or Kenny's (2) ?");
-        System.out.println("1) Ian");
-        System.out.println("2) Kenny");
-        String response = userInput.nextLine();
-        while (!response.equals("1") && !response.equals("2")) {
-            System.out.println("\nPlease enter (1) for option 1, or (2) for option 2.");
-            response = userInput.nextLine();
-        }
-        if (response.equals("1")) {
-            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\IanPlayerRankings");
-        }
-        else {
-            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\KennyPlayerRankings");
         }
     }
 
@@ -83,6 +68,23 @@ public class LeagueCLI {
             if (inputFile.isFile()) {
                 return inputFile;
             }
+        }
+    }
+
+    public static File ianOrKenny() {
+        System.out.println("Would you like to use Ian's rankings (1) or Kenny's (2) ?");
+        System.out.println("1) Ian");
+        System.out.println("2) Kenny");
+        String response = userInput.nextLine();
+        while (!response.equals("1") && !response.equals("2")) {
+            System.out.println("\nPlease enter 1 for option 1, or 2 for option 2.");
+            response = userInput.nextLine();
+        }
+        if (response.equals("1")) {
+            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\IanPlayerRankings");
+        }
+        else {
+            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\KennyPlayerRankings");
         }
     }
 
@@ -140,19 +142,6 @@ public class LeagueCLI {
         positionWeights.put(Position.S, s);
     }
 
-    private static void printWeights() {
-        for (Position p : Position.values()) {
-            System.out.println("\nBlue " + p + ": " + positionWeights.get(p)[0]);
-            System.out.println("Red " + p + ": " + positionWeights.get(p)[1]);
-        }
-    }
-
-    public static void pause() {
-        System.out.print("\nPress Enter to continue...");
-        userInput.nextLine();
-        System.out.println();
-    }
-
     public static int askPositionalBlueWeight(Position position) {
         System.out.print("How much should a blue chip " + position + " be worth? >>> ");
         while (!userInput.hasNextInt()) {
@@ -172,5 +161,22 @@ public class LeagueCLI {
         }
         return userInput.nextInt();
     }
+
+    private static void printWeights() {
+        for (Position p : Position.values()) {
+            System.out.println("\nBlue " + p + ": " + positionWeights.get(p)[0]);
+            System.out.println("Red " + p + ": " + positionWeights.get(p)[1]);
+        }
+    }
+
+    public static void pause() {
+        System.out.print("\nPress Enter to continue...");
+        userInput.nextLine();
+        System.out.println();
+    }
+
+
+
+
 
 }

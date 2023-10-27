@@ -5,19 +5,10 @@ import java.util.Map;
 public class Team {
 
     private List<Player> roster = new ArrayList<>();
+    private String name = "";
 
-    public void addPlayerToTeam(Player player) {
-        roster.add(player);
-    }
-
-    public void printPlayers() {
-        for (Player player : roster) {
-            System.out.println(player.getPosition() + ": " + player.getName());
-        }
-    }
-
-    public int size() {
-        return roster.size();
+    public Team(String name) {
+        this.name = name;
     }
 
     public int rateTeam(Map<Position, Integer[]> positionWeights) {
@@ -62,5 +53,25 @@ public class Team {
         }
         return score;
     }
+
+    public void addPlayerToTeam(Player player) {
+        roster.add(player);
+    }
+
+    public void printPlayers() {
+        for (Player player : roster) {
+            System.out.println(player.getPosition() + ": " + player.getName());
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int size() {
+        return roster.size();
+    }
+
+
 
 }
