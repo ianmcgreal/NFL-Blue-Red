@@ -32,21 +32,27 @@ public class LeagueCLI {
         System.out.println("This program requires a csv file of player rankings.");
     }
 
-    // Strangeness. Getting rid of all exception handling / looping to start over later
     public static File askForInputFile() {
-        System.out.print("Please enter the file path >>> ");
-        String inputPath = userInput.nextLine();
-        File inputFile = new File(inputPath);
-        return inputFile;
+        while (true) {
+            System.out.print("Please enter the file path >>> ");
+            String inputPath = userInput.nextLine();
+            while (inputPath == null) {
+                System.out.print("Null file path. Please enter a valid file path >>> ");
+                inputPath = userInput.nextLine();
+            }
+            File inputFile = new File(inputPath);
+            if (inputFile.isFile()) {
+                return inputFile;
+            }
+        }
     }
 
     public static void askForChipWeights() {
 
         System.out.println("\nTo carry out these calculations, you must assign a point value to the \"blue chip\"" +
                 " and a value to the \"red chip\" for each position. The blue chip value must be greater than the red chip value.");
-        pause();
         System.out.println("For example, a blue chip G could be worth 5 points while a red chip G is worth 3. However," +
-                " maybe a blue chip QB is worth 7 while a red chip QB is worth 4.");
+                " maybe a blue chip QB is worth 7 while a red chip QB is worth 4.\n");
 
         Integer[] qb = { askPositionalBlueWeight(Position.QB), askPositionalRedWeight(Position.QB) };
         positionWeights.put(Position.QB, qb);
@@ -94,8 +100,6 @@ public class LeagueCLI {
 
         Integer[] s = { askPositionalBlueWeight(Position.S), askPositionalRedWeight(Position.S) };
         positionWeights.put(Position.S, s);
-
-        System.out.println("************** MAP SIZE = " + positionWeights.size());
     }
 
     public static void pause() {
@@ -117,7 +121,7 @@ public class LeagueCLI {
     public static int askPositionalRedWeight(Position position) {
         System.out.print("How much should a red chip " + position + " be worth? >>> ");
         while (!userInput.hasNextInt()) {
-            System.err.println("Value entered is not an integer.");
+            System.out.println("Value entered is not an integer.");
             System.out.print("Please enter an integer for the value of a red chip " + position + " >>> ");
             userInput.next();
         }
