@@ -5,13 +5,16 @@ import java.util.Map;
 public class Team {
 
     private List<Player> roster = new ArrayList<>();
-    private String name = "";
+    private String name;
+    private int overallScore;
+    private int offenseScore;
+    private int defenseScore;
 
     public Team(String name) {
         this.name = name;
     }
 
-    public int rateTeam(Map<Position, Integer[]> positionWeights) {
+    public void rateTeam(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (player.isBlue()) {
@@ -21,10 +24,10 @@ public class Team {
                 score += positionWeights.get(player.getPosition())[1];
             }
         }
-        return score;
+        this.overallScore = score;
     }
 
-    public int rateOffense(Map<Position, Integer[]> positionWeights) {
+    public void rateOffense(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (player.isOffense()) {
@@ -36,10 +39,10 @@ public class Team {
                 }
             }
         }
-        return score;
+        this.offenseScore = score;
     }
 
-    public int rateDefense(Map<Position, Integer[]> positionWeights) {
+    public void rateDefense(Map<Position, Integer[]> positionWeights) {
         int score = 0;
         for (Player player : roster) {
             if (!player.isOffense()) {
@@ -51,7 +54,7 @@ public class Team {
                 }
             }
         }
-        return score;
+        this.defenseScore = score;
     }
 
     public void addPlayerToTeam(Player player) {
@@ -66,6 +69,18 @@ public class Team {
 
     public String getName() {
         return name;
+    }
+
+    public int getOverallScore() {
+        return overallScore;
+    }
+
+    public int getOffenseScore() {
+        return offenseScore;
+    }
+
+    public int getDefenseScore() {
+        return defenseScore;
     }
 
     public int size() {

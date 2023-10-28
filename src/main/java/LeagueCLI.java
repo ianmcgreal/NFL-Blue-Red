@@ -24,9 +24,9 @@ public class LeagueCLI {
         askForChipWeights();
         printWeights();
         //nfl.printAllLeagueRatings(positionWeights);
-        nfl.printTeamRatingsInOverallOrder(positionWeights);
-        nfl.printOffenseRatingsInOverallOrder(positionWeights);
-        nfl.printDefenseRatingsInOverallOrder(positionWeights);
+//        nfl.printTeamRatingsInOverallOrder(positionWeights);
+//        nfl.printOffenseRatingsInOverallOrder(positionWeights);
+//        nfl.printDefenseRatingsInOverallOrder(positionWeights);
     }
 
     public static void intro() {
