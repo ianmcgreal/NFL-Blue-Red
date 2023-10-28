@@ -59,8 +59,12 @@ public class League {
         }
     }
 
-    public void printOverallInOrder(Map<Position, Integer> weights) {
-
+    public void rateAllTeams(Map<Position, Integer[]> weights) {
+        for (Team team : leagueTeams.values()) {
+            team.rateTeam(weights);
+            team.rateOffense(weights);
+            team.rateDefense(weights);
+        }
     }
 
 //    public void printAllLeagueRatings(Map<Position, Integer[]> positionWeights) {
@@ -133,20 +137,20 @@ public class League {
 //        }
 //    }
 
-    public void addPlayerToLeague(String team, Player player) {
+    public void addPlayerToLeague (String team, Player player){
         leagueTeams.get(team).addPlayerToTeam(player);
         numOfLeaguePlayers++;
     }
 
-    public Map<String, Team> getLeagueTeams() {
+    public Map<String, Team> getLeagueTeams () {
         return this.leagueTeams;
     }
 
-    public int getNumOfLeaguePlayers() {
+    public int getNumOfLeaguePlayers () {
         return numOfLeaguePlayers;
     }
 
-    public void printAllRosters() {
+    public void printAllRosters () {
         for (String team : leagueTeams.keySet()) {
             System.out.println("*******************************");
             System.out.println(team);
@@ -155,6 +159,5 @@ public class League {
             System.out.println();
         }
     }
-
 }
 
