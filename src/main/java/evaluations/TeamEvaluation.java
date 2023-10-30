@@ -1,7 +1,5 @@
 package evaluations;
 
-import cli.*;
-import comparators.*;
 import nfl.*;
 
 import java.util.Map;
@@ -80,4 +78,18 @@ public class TeamEvaluation {
     public int getDefenseScore() {
         return defenseScore;
     }
+
+    public int getNumBlues() {
+        return team.getNumBlues();
+    }
+
+    public int getNumReds() {
+        return team.getNumReds();
+    }
+
+    public int getNumBluesAndReds() {
+        return team.getNumBluesAndReds();
+    }
+
+
 }

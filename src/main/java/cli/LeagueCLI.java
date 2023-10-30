@@ -27,9 +27,28 @@ public class LeagueCLI {
         }
         askForChipWeights();
         printWeights();
-//        printList(descendingOverall());
-//        printList(descendingOffense());
-//        printList(descendingDefense());
+
+        System.out.println("\n/////////////////// Total Sum Rankings (Blues + Reds) ///////////////////");
+
+        System.out.println("\n**************** Overall Rankings ****************");
+        printList(makeSortedList(new OverallComparator()), true, false);
+
+        System.out.println("\n**************** Offense Rankings ****************");
+        printList(makeSortedList(new OffenseComparator()), false, true);
+
+        System.out.println("\n**************** Defense Rankings ****************");
+        printList(makeSortedList(new DefenseComparator()), false, false);
+
+        System.out.println("\n/////////////////// Number of Chips Rankings ///////////////////");
+
+        System.out.println("\n**************** Number of Combined Blues and Reds Rankings ****************");
+        printListNum(makeSortedList(new CombBluesAndRedsComparator()), true, false);
+
+        System.out.println("\n**************** Number of Blues Rankings ****************");
+        printListNum(makeSortedList(new NumBlueComparator()), false, true);
+
+        System.out.println("\n**************** Number of Reds Rankings ****************");
+        printListNum(makeSortedList(new NumRedComparator()), false, false);
     }
 
     public static void intro() {
@@ -178,40 +197,75 @@ public class LeagueCLI {
         System.out.println();
     }
 
-    public static List<TeamEvaluation> descendingOffense() {
-        List<TeamEvaluation> descendingOffenseSort = new ArrayList<>();
-        for (Team team : nfl.getLeagueTeams().values()) {
-            descendingOffenseSort.add(new TeamEvaluation(team, positionWeights));
-        }
-        descendingOffenseSort.sort(new OffenseComparator());
-        Collections.reverse(descendingOffenseSort);
-        return descendingOffenseSort;
-    }
-
-    public static List<TeamEvaluation> descendingDefense() {
-        List<TeamEvaluation> descendingDefenseSort = new ArrayList<>();
-        for (Team team : nfl.getLeagueTeams().values()) {
-            descendingDefenseSort.add(new TeamEvaluation(team, positionWeights));
-        }
-        descendingDefenseSort.sort(new DefenseComparator());
-        Collections.reverse(descendingDefenseSort);
-        return descendingDefenseSort;
-    }
-
-    public static List<TeamEvaluation> descendingOverall() {
-        List<TeamEvaluation> descendingOverallSort = new ArrayList<>();
-        for (Team team : nfl.getLeagueTeams().values()) {
-            descendingOverallSort.add(new TeamEvaluation(team, positionWeights));
-        }
-        descendingOverallSort.sort(new OverallComparator());
-        Collections.reverse(descendingOverallSort);
-        return descendingOverallSort;
-    }
-
-//    public static void printList(List<TeamEvaluation> evals) {
-//        for (TeamEvaluation eval : evals) {
-//            System.out.println(eval.getTeam().getName() + "");
+//    public static List<TeamEvaluation> descendingOffense() {
+//        List<TeamEvaluation> descendingOffenseSort = new ArrayList<>();
+//        for (Team team : nfl.getLeagueTeams().values()) {
+//            descendingOffenseSort.add(new TeamEvaluation(team, positionWeights));
 //        }
+//        descendingOffenseSort.sort(new OffenseComparator());
+//        Collections.reverse(descendingOffenseSort);
+//        return descendingOffenseSort;
+//    }
+//
+//    public static List<TeamEvaluation> descendingDefense() {
+//        List<TeamEvaluation> descendingDefenseSort = new ArrayList<>();
+//        for (Team team : nfl.getLeagueTeams().values()) {
+//            descendingDefenseSort.add(new TeamEvaluation(team, positionWeights));
+//        }
+//        descendingDefenseSort.sort(new DefenseComparator());
+//        Collections.reverse(descendingDefenseSort);
+//        return descendingDefenseSort;
+//    }
+//
+//    public static List<TeamEvaluation> descendingOverall() {
+//        List<TeamEvaluation> descendingOverallSort = new ArrayList<>();
+//        for (Team team : nfl.getLeagueTeams().values()) {
+//            descendingOverallSort.add(new TeamEvaluation(team, positionWeights));
+//        }
+//        descendingOverallSort.sort(new OverallComparator());
+//        Collections.reverse(descendingOverallSort);
+//        return descendingOverallSort;
 //    }
 
+    public static List<TeamEvaluation> makeSortedList(Comparator<TeamEvaluation> comparator) {
+        List<TeamEvaluation> toSort = new ArrayList<>();
+        for (Team team : nfl.getLeagueTeams().values()) {
+            toSort.add(new TeamEvaluation(team, positionWeights));
+        }
+        toSort.sort(comparator);
+        Collections.reverse(toSort);
+        return toSort;
+    }
+
+    public static void printList(List<TeamEvaluation> evals, boolean forOverall, boolean forOffense) {
+        int ordinal = 1;
+        for (TeamEvaluation eval : evals) {
+            if (forOverall) {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getOverallScore() + ")");
+            }
+            else if (forOffense) {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getOffenseScore() + ")");
+            }
+            else {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getDefenseScore() + ")");
+            }
+            ordinal++;
+        }
+    }
+
+    public static void printListNum(List<TeamEvaluation> evals, boolean combined, boolean forBlue) {
+        int ordinal = 1;
+        for (TeamEvaluation eval : evals) {
+            if (combined) {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getNumBluesAndReds() + ")");
+            }
+            else if (forBlue) {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getNumBlues() + ")");
+            }
+            else {
+                System.out.println(ordinal + ". " + eval.getTeam().getName() + " (" + eval.getNumReds() + ")");
+            }
+            ordinal++;
+        }
+    }
 }

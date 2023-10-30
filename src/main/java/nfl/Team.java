@@ -3,10 +3,6 @@ package nfl;
 import java.util.ArrayList;
 import java.util.List;
 
-import cli.*;
-import comparators.*;
-import evaluations.*;
-
 public class Team {
 
     private String name;
@@ -36,7 +32,15 @@ public class Team {
         return roster;
     }
 
-    public int size() {
+    public int getNumBlues() {
+        return numBlues;
+    }
+
+    public int getNumReds() {
+        return numReds;
+    }
+
+    public int getNumBluesAndReds() {
         return roster.size();
     }
 

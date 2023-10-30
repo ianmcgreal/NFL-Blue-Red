@@ -6,10 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-import cli.*;
-import comparators.*;
-import evaluations.*;
-
 import static java.util.Map.entry;
 
 public class League {
