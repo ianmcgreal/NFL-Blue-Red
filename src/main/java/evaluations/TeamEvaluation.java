@@ -1,3 +1,9 @@
+package evaluations;
+
+import cli.*;
+import comparators.*;
+import nfl.*;
+
 import java.util.Map;
 
 public class TeamEvaluation {
@@ -11,49 +17,60 @@ public class TeamEvaluation {
     public TeamEvaluation(Team team, Map<Position, Integer[]> weights) {
         this.team = team;
         this.weights = weights;
+        rateOverall();
+        rateOffense();
+        rateDefense();
     }
 
-    public void rateTeam(Map<Position, Integer[]> positionWeights) {
+    public void rateOverall() {
         int score = 0;
         for (Player player : team.getRoster()) {
             if (player.isBlue()) {
-                score += positionWeights.get(player.getPosition())[0];
+                score += weights.get(player.getPosition())[0];
             }
             else {
-                score += positionWeights.get(player.getPosition())[1];
+                score += weights.get(player.getPosition())[1];
             }
         }
         this.overallScore = score;
     }
 
-    public void rateOffense(Map<Position, Integer[]> positionWeights) {
+    public void rateOffense() {
         int score = 0;
         for (Player player : team.getRoster()) {
             if (player.isOffense()) {
                 if (player.isBlue()) {
-                    score += positionWeights.get(player.getPosition())[0];
+                    score += weights.get(player.getPosition())[0];
                 }
                 else {
-                    score += positionWeights.get(player.getPosition())[1];
+                    score += weights.get(player.getPosition())[1];
                 }
             }
         }
         this.offenseScore = score;
     }
 
-    public void rateDefense(Map<Position, Integer[]> positionWeights) {
+    public void rateDefense() {
         int score = 0;
         for (Player player : team.getRoster()) {
             if (!player.isOffense()) {
                 if (player.isBlue()) {
-                    score += positionWeights.get(player.getPosition())[0];
+                    score += weights.get(player.getPosition())[0];
                 }
                 else {
-                    score += positionWeights.get(player.getPosition())[1];
+                    score += weights.get(player.getPosition())[1];
                 }
             }
         }
         this.defenseScore = score;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public int getOverallScore() {
+        return overallScore;
     }
 
     public int getOffenseScore() {
@@ -62,9 +79,5 @@ public class TeamEvaluation {
 
     public int getDefenseScore() {
         return defenseScore;
-    }
-
-    public int getOverallScore() {
-        return overallScore;
     }
 }

@@ -1,6 +1,12 @@
+package nfl;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import cli.*;
+import comparators.*;
+import evaluations.*;
 
 public class Player {
 
@@ -157,19 +163,4 @@ public class Player {
     public void printPlayer() {
         System.out.println(position + " " + name);
     }
-}
-
-enum Position {
-    QB,
-    RB,
-    TE,
-    WR,
-    T,
-    G,
-    C,
-    DT,
-    EDGE,
-    LB,
-    CB,
-    S
 }

@@ -1,5 +1,11 @@
+package cli;
+
 import java.io.File;
 import java.util.*;
+
+import comparators.*;
+import evaluations.*;
+import nfl.*;
 
 public class LeagueCLI {
 
@@ -21,20 +27,9 @@ public class LeagueCLI {
         }
         askForChipWeights();
         printWeights();
-//        nfl.rateAllTeams(positionWeights);
-//        List<Team> descending = new ArrayList<>(nfl.getLeagueTeams().values());
-//
-//        descending.sort(new OverallComparator());
-//        descending = descending.reversed();
-//        printList(descending, "overall");
-//
-//        descending.sort(new OffenseComparator());
-//        descending = descending.reversed();
-//        printList(descending, "offense");
-//
-//        descending.sort(new DefenseComparator());
-//        descending = descending.reversed();
-//        printList(descending, "defense");
+//        printList(descendingOverall());
+//        printList(descendingOffense());
+//        printList(descendingDefense());
     }
 
     public static void intro() {
@@ -177,26 +172,46 @@ public class LeagueCLI {
         }
     }
 
-//    private static void printList(List<Team> sorted, String whichField) {
-//        System.out.println("\n***************************");
-//        System.out.println(whichField + " Scores");
-//        int ordinalRank = 1;
-//        for (Team team : sorted) {
-//            if (whichField.equalsIgnoreCase("offense")) {
-//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOffenseScore() + ")");
-//            }
-//            else if (whichField.equalsIgnoreCase("defense")) {
-//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getDefenseScore() + ")");
-//            }
-//            else {
-//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOverallScore() + ")");
-//            }
-//        }
-//    }
-
     public static void pause() {
         System.out.print("\nPress Enter to continue...");
         userInput.nextLine();
         System.out.println();
     }
+
+    public static List<TeamEvaluation> descendingOffense() {
+        List<TeamEvaluation> descendingOffenseSort = new ArrayList<>();
+        for (Team team : nfl.getLeagueTeams().values()) {
+            descendingOffenseSort.add(new TeamEvaluation(team, positionWeights));
+        }
+        descendingOffenseSort.sort(new OffenseComparator());
+        Collections.reverse(descendingOffenseSort);
+        return descendingOffenseSort;
+    }
+
+    public static List<TeamEvaluation> descendingDefense() {
+        List<TeamEvaluation> descendingDefenseSort = new ArrayList<>();
+        for (Team team : nfl.getLeagueTeams().values()) {
+            descendingDefenseSort.add(new TeamEvaluation(team, positionWeights));
+        }
+        descendingDefenseSort.sort(new DefenseComparator());
+        Collections.reverse(descendingDefenseSort);
+        return descendingDefenseSort;
+    }
+
+    public static List<TeamEvaluation> descendingOverall() {
+        List<TeamEvaluation> descendingOverallSort = new ArrayList<>();
+        for (Team team : nfl.getLeagueTeams().values()) {
+            descendingOverallSort.add(new TeamEvaluation(team, positionWeights));
+        }
+        descendingOverallSort.sort(new OverallComparator());
+        Collections.reverse(descendingOverallSort);
+        return descendingOverallSort;
+    }
+
+//    public static void printList(List<TeamEvaluation> evals) {
+//        for (TeamEvaluation eval : evals) {
+//            System.out.println(eval.getTeam().getName() + "");
+//        }
+//    }
+
 }

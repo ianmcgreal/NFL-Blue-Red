@@ -1,4 +1,10 @@
+package comparators;
+
 import java.util.Comparator;
+
+import cli.*;
+import evaluations.*;
+import nfl.*;
 
 public class DefenseComparator implements Comparator<TeamEvaluation> {
 
