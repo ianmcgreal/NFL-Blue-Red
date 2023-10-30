@@ -1,9 +1,9 @@
 import java.util.Comparator;
 
-public class OffenseComparator implements Comparator<Team> {
+public class OffenseComparator implements Comparator<TeamEvaluation> {
 
     @Override
-    public int compare(Team o1, Team o2) {
+    public int compare(TeamEvaluation o1, TeamEvaluation o2) {
         if (o1.getOffenseScore() < o2.getOffenseScore()) {
             return -1;
         }

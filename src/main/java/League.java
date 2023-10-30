@@ -59,14 +59,37 @@ public class League {
         }
     }
 
-    public void rateAllTeams(Map<Position, Integer[]> weights) {
-        for (Team team : leagueTeams.values()) {
-            team.rateTeam(weights);
-            team.rateOffense(weights);
-            team.rateDefense(weights);
+    public void addPlayerToLeague(String team, Player player){
+        leagueTeams.get(team).addPlayerToTeam(player);
+        numOfLeaguePlayers++;
+    }
+
+    public Map<String, Team> getLeagueTeams() {
+        return this.leagueTeams;
+    }
+
+    public int getNumOfLeaguePlayers() {
+        return numOfLeaguePlayers;
+    }
+
+    public void printAllRosters() {
+        for (String team : leagueTeams.keySet()) {
+            System.out.println("*******************************");
+            System.out.println(team);
+            System.out.println("*******************************");
+            leagueTeams.get(team).printPlayers();
+            System.out.println();
         }
     }
 
+//    public void rateAllTeams(Map<Position, Integer[]> weights) {
+//        for (Team team : leagueTeams.values()) {
+//            team.rateTeam(weights);
+//            team.rateOffense(weights);
+//            team.rateDefense(weights);
+//        }
+//    }
+//
 //    public void printAllLeagueRatings(Map<Position, Integer[]> positionWeights) {
 //        for (String team : leagueTeams.keySet()) {
 //            Team thisTeam = leagueTeams.get(team);
@@ -137,27 +160,5 @@ public class League {
 //        }
 //    }
 
-    public void addPlayerToLeague (String team, Player player){
-        leagueTeams.get(team).addPlayerToTeam(player);
-        numOfLeaguePlayers++;
-    }
-
-    public Map<String, Team> getLeagueTeams () {
-        return this.leagueTeams;
-    }
-
-    public int getNumOfLeaguePlayers () {
-        return numOfLeaguePlayers;
-    }
-
-    public void printAllRosters () {
-        for (String team : leagueTeams.keySet()) {
-            System.out.println("*******************************");
-            System.out.println(team);
-            System.out.println("*******************************");
-            leagueTeams.get(team).printPlayers();
-            System.out.println();
-        }
-    }
 }
 

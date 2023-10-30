@@ -21,20 +21,20 @@ public class LeagueCLI {
         }
         askForChipWeights();
         printWeights();
-        nfl.rateAllTeams(positionWeights);
-        List<Team> descending = new ArrayList<>(nfl.getLeagueTeams().values());
-
-        descending.sort(new OverallComparator());
-        descending = descending.reversed();
-        printList(descending, "overall");
-
-        descending.sort(new OffenseComparator());
-        descending = descending.reversed();
-        printList(descending, "offense");
-
-        descending.sort(new DefenseComparator());
-        descending = descending.reversed();
-        printList(descending, "defense");
+//        nfl.rateAllTeams(positionWeights);
+//        List<Team> descending = new ArrayList<>(nfl.getLeagueTeams().values());
+//
+//        descending.sort(new OverallComparator());
+//        descending = descending.reversed();
+//        printList(descending, "overall");
+//
+//        descending.sort(new OffenseComparator());
+//        descending = descending.reversed();
+//        printList(descending, "offense");
+//
+//        descending.sort(new DefenseComparator());
+//        descending = descending.reversed();
+//        printList(descending, "defense");
     }
 
     public static void intro() {
@@ -177,22 +177,22 @@ public class LeagueCLI {
         }
     }
 
-    private static void printList(List<Team> sorted, String whichField) {
-        System.out.println("\n***************************");
-        System.out.println(whichField + " Scores");
-        int ordinalRank = 1;
-        for (Team team : sorted) {
-            if (whichField.equalsIgnoreCase("offense")) {
-                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOffenseScore() + ")");
-            }
-            else if (whichField.equalsIgnoreCase("defense")) {
-                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getDefenseScore() + ")");
-            }
-            else {
-                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOverallScore() + ")");
-            }
-        }
-    }
+//    private static void printList(List<Team> sorted, String whichField) {
+//        System.out.println("\n***************************");
+//        System.out.println(whichField + " Scores");
+//        int ordinalRank = 1;
+//        for (Team team : sorted) {
+//            if (whichField.equalsIgnoreCase("offense")) {
+//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOffenseScore() + ")");
+//            }
+//            else if (whichField.equalsIgnoreCase("defense")) {
+//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getDefenseScore() + ")");
+//            }
+//            else {
+//                System.out.println(ordinalRank++ + ". " + team.getName() + " (" + team.getOverallScore() + ")");
+//            }
+//        }
+//    }
 
     public static void pause() {
         System.out.print("\nPress Enter to continue...");

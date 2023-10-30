@@ -153,6 +153,10 @@ public class Player {
     public boolean isOffense() {
         return offensePositions.contains(position);
     }
+
+    public void printPlayer() {
+        System.out.println(position + " " + name);
+    }
 }
 
 enum Position {
