@@ -27,27 +27,28 @@ public class LeagueCLI {
         }
         askForChipWeights();
         printWeights();
+        nfl.printAllRosters();
 
-        System.out.println("\n/////////////////// Total Sum Rankings (Blues + Reds) ///////////////////");
+        System.out.println("\n**************** Total Sum Rankings (Blues + Reds) ****************");
 
-        System.out.println("\n**************** Overall Rankings ****************");
+        System.out.println("\n-------------- Overall Rankings --------------");
         printList(makeSortedList(new OverallComparator()), true, false);
 
-        System.out.println("\n**************** Offense Rankings ****************");
+        System.out.println("\n-------------- Offense Rankings --------------");
         printList(makeSortedList(new OffenseComparator()), false, true);
 
-        System.out.println("\n**************** Defense Rankings ****************");
+        System.out.println("\n-------------- Defense Rankings --------------");
         printList(makeSortedList(new DefenseComparator()), false, false);
 
-        System.out.println("\n/////////////////// Number of Chips Rankings ///////////////////");
+        System.out.println("\n**************** Number of Chips Rankings ****************");
 
-        System.out.println("\n**************** Number of Combined Blues and Reds Rankings ****************");
+        System.out.println("\n-------------- Number of Combined Blues and Reds Rankings --------------");
         printListNum(makeSortedList(new CombBluesAndRedsComparator()), true, false);
 
-        System.out.println("\n**************** Number of Blues Rankings ****************");
+        System.out.println("\n-------------- Number of Blues Rankings --------------");
         printListNum(makeSortedList(new NumBlueComparator()), false, true);
 
-        System.out.println("\n**************** Number of Reds Rankings ****************");
+        System.out.println("\n-------------- Number of Reds Rankings --------------");
         printListNum(makeSortedList(new NumRedComparator()), false, false);
     }
 
@@ -62,7 +63,7 @@ public class LeagueCLI {
     }
 
     public static boolean isEnteringOwnFile() {
-        System.out.println("Would you like to enter your own csv file or use an existing preloaded file?");
+        System.out.println("\nWould you like to enter your own csv file or use an existing preloaded file?");
         System.out.println("1) Enter CSV file");
         System.out.println("2) Use preloaded file");
         String response = userInput.nextLine();
@@ -70,12 +71,7 @@ public class LeagueCLI {
             System.out.println("Please enter (1) for option 1, or (2) for option 2.");
             response = userInput.nextLine();
         }
-        if (response.equals("1")) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return response.equals("1");
     }
 
     public static File askForInputFile() {
@@ -102,12 +98,30 @@ public class LeagueCLI {
             System.out.println("\nPlease enter 1 for option 1, or 2 for option 2.");
             response = userInput.nextLine();
         }
+
+//        // TE Laptop
+//        if (response.equals("1")) {
+//            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\IanPlayerRankings");
+//        }
+//        else {
+//            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\KennyPlayerRankings");
+//        }
+
+        // Macbook
         if (response.equals("1")) {
-            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\IanPlayerRankings");
+            return new File("/Users/ianmcgreal/NFL-Blue-Red/IanPlayerRankings");
         }
         else {
-            return new File("C:\\Users\\Student\\Desktop\\NFL-Blue-Red\\KennyPlayerRankings");
+            return new File("/Users/ianmcgreal/NFL-Blue-Red/KennyPlayerRankings");
         }
+
+//        // PC
+//        if (response.equals("1")) {
+//            return new File("");
+//        }
+//        else {
+//            return new File("");
+//        }
     }
 
     public static void askForChipWeights() {
@@ -185,6 +199,7 @@ public class LeagueCLI {
     }
 
     private static void printWeights() {
+        System.out.println("***** WEIGHTS *****");
         for (Position p : Position.values()) {
             System.out.println("\nBlue " + p + ": " + positionWeights.get(p)[0]);
             System.out.println("Red " + p + ": " + positionWeights.get(p)[1]);
@@ -196,36 +211,6 @@ public class LeagueCLI {
         userInput.nextLine();
         System.out.println();
     }
-
-//    public static List<TeamEvaluation> descendingOffense() {
-//        List<TeamEvaluation> descendingOffenseSort = new ArrayList<>();
-//        for (Team team : nfl.getLeagueTeams().values()) {
-//            descendingOffenseSort.add(new TeamEvaluation(team, positionWeights));
-//        }
-//        descendingOffenseSort.sort(new OffenseComparator());
-//        Collections.reverse(descendingOffenseSort);
-//        return descendingOffenseSort;
-//    }
-//
-//    public static List<TeamEvaluation> descendingDefense() {
-//        List<TeamEvaluation> descendingDefenseSort = new ArrayList<>();
-//        for (Team team : nfl.getLeagueTeams().values()) {
-//            descendingDefenseSort.add(new TeamEvaluation(team, positionWeights));
-//        }
-//        descendingDefenseSort.sort(new DefenseComparator());
-//        Collections.reverse(descendingDefenseSort);
-//        return descendingDefenseSort;
-//    }
-//
-//    public static List<TeamEvaluation> descendingOverall() {
-//        List<TeamEvaluation> descendingOverallSort = new ArrayList<>();
-//        for (Team team : nfl.getLeagueTeams().values()) {
-//            descendingOverallSort.add(new TeamEvaluation(team, positionWeights));
-//        }
-//        descendingOverallSort.sort(new OverallComparator());
-//        Collections.reverse(descendingOverallSort);
-//        return descendingOverallSort;
-//    }
 
     public static List<TeamEvaluation> makeSortedList(Comparator<TeamEvaluation> comparator) {
         List<TeamEvaluation> toSort = new ArrayList<>();

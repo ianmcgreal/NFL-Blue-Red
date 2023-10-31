@@ -1,10 +1,10 @@
 package nfl;
 
-import cli.LeagueCLI;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+
+import cli.LeagueCLI;
 
 import static java.util.Map.entry;
 
@@ -55,6 +55,7 @@ public class League {
             while (fileReader.hasNextLine()) {
                 String[] playerInfo = fileReader.nextLine().split(",");
                 boolean blueChip = playerInfo[3].equalsIgnoreCase("Blue");
+                // addPlayerToLeague(team name, new player (name, position), blue chip or not)
                 this.addPlayerToLeague(playerInfo[2], new Player(playerInfo[0], playerInfo[1], blueChip));
             }
         } catch (FileNotFoundException e) {
@@ -78,91 +79,12 @@ public class League {
 
     public void printAllRosters() {
         for (String team : leagueTeams.keySet()) {
-            System.out.println("*******************************");
+            System.out.println("\n*******************************");
             System.out.println(team);
             System.out.println("*******************************");
             leagueTeams.get(team).printPlayers();
             System.out.println();
         }
     }
-
-//    public void rateAllTeams(Map<nfl.Position, Integer[]> weights) {
-//        for (nfl.Team team : leagueTeams.values()) {
-//            team.rateTeam(weights);
-//            team.rateOffense(weights);
-//            team.rateDefense(weights);
-//        }
-//    }
-//
-//    public void printAllLeagueRatings(Map<nfl.Position, Integer[]> positionWeights) {
-//        for (String team : leagueTeams.keySet()) {
-//            nfl.Team thisTeam = leagueTeams.get(team);
-//            System.out.println("\n*******************************");
-//            System.out.println("*******************************");
-//            System.out.println(team);
-//            System.out.println("Overall: " + thisTeam.rateTeam(positionWeights));
-//            System.out.println("Offense: " + thisTeam.rateOffense(positionWeights));
-//            System.out.println("Defense: " + thisTeam.rateDefense(positionWeights));
-//            System.out.println("Number of players: " + thisTeam.size());
-//            System.out.println("*******************************");
-//        }
-//    }
-//
-//    public void printTeamRatingsInOverallOrder(Map<nfl.Position, Integer[]> positionWeights) {
-//        Map<Integer, String> toSort = new HashMap<>();
-//        for (nfl.Team team : leagueTeams.values()) {
-//            toSort.put(team.rateTeam(positionWeights), team.getName());
-//        }
-//        List<Integer> ratingsArray = new ArrayList<>(toSort.keySet());
-//        // Data structures would be so sad...
-//        Collections.sort(ratingsArray);
-//        Collections.reverse(ratingsArray);
-//        int ordinalRanking = 1;
-//        System.out.println("\n************** Teams ranked by overall rating (blue and red combined) **************");
-//        for (Integer rating : ratingsArray) {
-//            // Kinda tough to read this method
-//            //                          nfl.Team name                 rating
-//            System.out.println(ordinalRanking++ + ". " + toSort.get(rating) + ": (" + rating + ")");
-//        }
-//    }
-//
-//    // Could probably combine into one with defense and overall
-//    public void printOffenseRatingsInOverallOrder(Map<nfl.Position, Integer[]> positionWeights) {
-//        Map<Integer, String> toSort = new HashMap<>();
-//        for (nfl.Team team : leagueTeams.values()) {
-//            toSort.put(team.rateOffense(positionWeights), team.getName());
-//        }
-//        List<Integer> ratingsArray = new ArrayList<>(toSort.keySet());
-//        // Data structures would be so sad...
-//        Collections.sort(ratingsArray);
-//        Collections.reverse(ratingsArray);
-//        int ordinalRanking = 1;
-//        System.out.println("\n************** Teams ranked by offense rating (blue and red combined) **************");
-//        for (Integer rating : ratingsArray) {
-//            // Kinda tough to read this method
-//            //                          nfl.Team name                 rating
-//            System.out.println(ordinalRanking++ + ". " + toSort.get(rating) + ": (" + rating + ")");
-//        }
-//    }
-//
-//    // Could probably combine into one with offense and overall
-//    public void printDefenseRatingsInOverallOrder(Map<nfl.Position, Integer[]> positionWeights) {
-//        Map<Integer, String> toSort = new HashMap<>();
-//        for (nfl.Team team : leagueTeams.values()) {
-//            toSort.put(team.rateDefense(positionWeights), team.getName());
-//        }
-//        List<Integer> ratingsArray = new ArrayList<>(toSort.keySet());
-//        // Data structures would be so sad...
-//        Collections.sort(ratingsArray);
-//        Collections.reverse(ratingsArray);
-//        int ordinalRanking = 1;
-//        System.out.println("\n************** Teams ranked by defense rating (blue and red combined) **************");
-//        for (Integer rating : ratingsArray) {
-//            // Kinda tough to read this method
-//            //                          nfl.Team name                 rating
-//            System.out.println(ordinalRanking++ + ". " + toSort.get(rating) + ": (" + rating + ")");
-//        }
-//    }
-
 }
 

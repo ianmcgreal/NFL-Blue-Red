@@ -1,6 +1,7 @@
 package nfl;
 
 public enum Position {
+    // Offense
     QB,
     RB,
     TE,
@@ -8,6 +9,8 @@ public enum Position {
     T,
     G,
     C,
+
+    // Defense
     DT,
     EDGE,
     LB,

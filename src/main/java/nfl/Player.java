@@ -4,10 +4,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import cli.*;
-import comparators.*;
-import evaluations.*;
-
 public class Player {
 
     private final String name;
@@ -26,33 +22,37 @@ public class Player {
     public Player(String name, String position, boolean isBlue) {
         this.name = name;
         this.isBlue = isBlue;
+        this.position = readPosition(position);
+    }
+
+    public Position readPosition(String position) {
         if (position.equalsIgnoreCase("quarterback")
                 || position.equalsIgnoreCase("quarter back")
                 || position.equalsIgnoreCase("quarter_back")
                 || position.equalsIgnoreCase("QB"))
         {
-            this.position = Position.QB;
+            return Position.QB;
         }
 
         else if (position.equalsIgnoreCase("running back")
                 || position.equalsIgnoreCase("running_back")
                 || position.equalsIgnoreCase("RB"))
         {
-            this.position = Position.RB;
+            return Position.RB;
         }
 
         else if (position.equalsIgnoreCase("tight end")
                 || position.equalsIgnoreCase("tight_end")
                 || position.equalsIgnoreCase("TE"))
         {
-            this.position = Position.TE;
+            return Position.TE;
         }
 
         else if (position.equalsIgnoreCase("wide receiver")
                 || position.equalsIgnoreCase("wide_receiver")
                 || position.equalsIgnoreCase("WR"))
         {
-            this.position = Position.WR;
+            return Position.WR;
         }
 
         else if (position.equalsIgnoreCase("tackle")
@@ -63,7 +63,7 @@ public class Player {
                 || position.equalsIgnoreCase("right tackle")
                 || position.equalsIgnoreCase("right_tackle")
                 || position.equalsIgnoreCase("RT")) {
-            this.position = Position.T;
+            return Position.T;
         }
 
         else if (position.equalsIgnoreCase("guard")
@@ -75,13 +75,13 @@ public class Player {
                 || position.equalsIgnoreCase("right_guard")
                 || position.equalsIgnoreCase("RG"))
         {
-            this.position = Position.G;
+            return Position.G;
         }
 
         else if (position.equalsIgnoreCase("center")
                 || position.equalsIgnoreCase("C"))
         {
-            this.position = Position.C;
+            return Position.C;
         }
 
         else if (position.equalsIgnoreCase("pass rusher")
@@ -98,7 +98,7 @@ public class Player {
                 || position.equalsIgnoreCase("right_end")
                 || position.equalsIgnoreCase("RE"))
         {
-            this.position = Position.EDGE;
+            return Position.EDGE;
         }
 
         else if (position.equalsIgnoreCase("defensive tackle")
@@ -107,7 +107,7 @@ public class Player {
                 || position.equalsIgnoreCase("interior_defensive_tackle")
                 || position.equalsIgnoreCase("DT"))
         {
-            this.position = Position.DT;
+            return Position.DT;
         }
 
         else if (position.equalsIgnoreCase("linebacker")
@@ -119,7 +119,7 @@ public class Player {
                 || position.equalsIgnoreCase("middle line backer")
                 || position.equalsIgnoreCase("middle_line_backer"))
         {
-            this.position = Position.LB;
+            return Position.LB;
         }
 
         else if (position.equalsIgnoreCase("cornerback")
@@ -128,7 +128,7 @@ public class Player {
                 || position.equalsIgnoreCase("slot corner")
                 || position.equalsIgnoreCase("slot_corner"))
         {
-            this.position = Position.CB;
+            return Position.CB;
         }
 
         else if (position.equalsIgnoreCase("safety")
@@ -140,8 +140,9 @@ public class Player {
                 || position.equalsIgnoreCase("strong_safety")
                 || position.equalsIgnoreCase("SS"))
         {
-            this.position = Position.S;
+            return Position.S;
         }
+        return null;
     }
 
     public String getName() {
@@ -161,6 +162,7 @@ public class Player {
     }
 
     public void printPlayer() {
-        System.out.println(position + " " + name);
+        String blueRed = isBlue ? "Blue" : "Red";
+        System.out.println(position + " " + name + " (" + blueRed + ")");
     }
 }

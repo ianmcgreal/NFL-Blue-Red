@@ -44,6 +44,7 @@ public class Team {
         return roster.size();
     }
 
+    // Formatting is done in printing method in League
     public void printPlayers() {
         for (Player player : roster) {
             player.printPlayer();
